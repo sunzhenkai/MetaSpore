@@ -66,8 +66,8 @@ RUN python -m pip install ${METASPORE_WHEEL} && pip cache purge
 FROM ${METASPORE_BUILD_IMAGE} AS metaspore_build
 FROM env as metaspore_build_install
 COPY --from=metaspore_build /opt/metaspore-build-release/metaspore-*.whl .
-COPY --from=metaspore_build /lib/x86_64-linux-gnu/libstdc++.so.6.0.28 /lib/x86_64-linux-gnu
-RUN ln -svf libstdc++.so.6.0.28 /lib/x86_64-linux-gnu/libstdc++.so.6
+COPY --from=metaspore_build /lib/x86_64-linux-gnu/libstdc++.so.6.0.* /lib/x86_64-linux-gnu
+RUN ln libstdc++.so.6.0.* | xargs -I {} ln -svf {} /lib/x86_64-linux-gnu/libstdc++.so.6
 RUN python -m pip install metaspore-*.whl && pip cache purge && rm -f metaspore-*.whl
 
 FROM metaspore_${METASPORE_RELEASE}_install as spark-tarball-install
