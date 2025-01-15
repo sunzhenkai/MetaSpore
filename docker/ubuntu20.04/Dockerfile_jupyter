@@ -159,7 +159,7 @@ ENV NPM_CONFIG_PREFIX=${HOME}/.local/share/jupyter/lab/staging
 # We should build first then install nodejs based language servers
 RUN mkdir -p ${HOME}/.local/share/jupyter/lab/staging && \
    npm config set prefix=${HOME}/.local/share/jupyter/lab/staging && \
-   jlpm config set registry https://registry.npm.taobao.org && \
+#   jlpm config set registry https://registry.npm.taobao.org && \
    python3 -m pip install -U jedi-language-server && \
    jupyter lab build --debug && \
    npm install --prefix ${HOME}/.local/share/jupyter/lab/staging --save-dev yaml-language-server && \
