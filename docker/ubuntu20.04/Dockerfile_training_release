@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ARG METASPORE_BUILD_IMAGE
 ARG SPARK_RELEASE="tarball"
 ARG METASPORE_RELEASE="http"
 ARG INSTALL_SPARK_CLOUD="false"
@@ -62,6 +63,7 @@ FROM env as metaspore_http_install
 ARG METASPORE_WHEEL="metaspore==1.2.0"
 RUN python -m pip install ${METASPORE_WHEEL} && pip cache purge
 
+FROM ${METASPORE_BUILD_IMAGE} AS metaspore_build
 FROM env as metaspore_build_install
 COPY --from=metaspore_build /opt/metaspore-build-release/metaspore-*.whl .
 COPY --from=metaspore_build /lib/x86_64-linux-gnu/libstdc++.so.6.0.29 /lib/x86_64-linux-gnu
