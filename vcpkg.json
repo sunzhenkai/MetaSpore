@@ -1,57 +1,62 @@
 {
-    "name": "metaspore",
-    "version": "1.2.0",
-    "dependencies": [
-        "range-v3",
-        "boost-asio",
-        "boost-dll",
-        "boost-process",
-        "boost-filesystem",
-        "boost-system",
-        "boost-uuid",
-        "boost-spirit",
-        {
-            "name": "asio-grpc",
-            "features": [
-                "boost-container"
-            ]
-        },
-        "protobuf",
-        "fmt",
-        "spdlog",
-        {
-            "name": "mimalloc",
-            "features": [
-                "override"
-            ]
-        },
-        "gtest",
-        "gflags",
-        "benchmark",
-        "onnxruntime-gpu-default",
-        "xtensor",
-        "cppzmq",
-        "python3",
-        "pybind11",
-        "json11",
-        "dbg-macro",
-        "thrift",
-        {
-            "name": "aws-sdk-cpp",
-            "features": [
-                "s3"
-            ]
-        },
-        "concurrentqueue",
-        "zeromq",
-        "zlib"
-    ],
-    "overrides": [
-        {
-            "name": "python3",
-            "version": "3.8.3",
-            "port-version": 2
-        }
-    ],
-    "builtin-baseline": "e2794913924ef606cc7bbc59c173f2714e9853c5"
+  "name": "metaspore",
+  "version": "1.2.0",
+  "dependencies": [
+    "abseil",
+    "range-v3",
+    "boost-asio",
+    "boost-dll",
+    "boost-process",
+    "boost-filesystem",
+    "boost-system",
+    "boost-uuid",
+    "boost-spirit",
+    {
+      "name": "asio-grpc",
+      "features": [
+        "boost-container"
+      ]
+    },
+    "protobuf",
+    "fmt",
+    "spdlog",
+    {
+      "name": "mimalloc",
+      "features": [
+        "override"
+      ]
+    },
+    "gtest",
+    "gflags",
+    "benchmark",
+    "onnxruntime-gpu-default",
+    "xtensor",
+    "cppzmq",
+    "python3",
+    "pybind11",
+    "json11",
+    "dbg-macro",
+    "thrift",
+    {
+      "name": "aws-sdk-cpp",
+      "features": [
+        "s3"
+      ]
+    },
+    "concurrentqueue",
+    "zeromq",
+    "zlib"
+  ],
+  "overrides": [
+    {
+      "name": "python3",
+      "version": "3.8.3",
+      "port-version": 2
+    },
+    {
+      "name": "abseil",
+      "version": "20250127.0"
+    }
+  ],
+  "builtin-baseline": "e2794913924ef606cc7bbc59c173f2714e9853c5"
 }
