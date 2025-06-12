@@ -25,7 +25,7 @@ serving: dev
 	@DOCKER_BUILDKIT=1 docker build $(FIX_ARG) -f docker/ubuntu20.04/Dockerfile_serving_build --build-arg DEV_IMAGE=$(DEV_IMAGE) -t $(SERVING_BUILD_IMAGE) .
 	@DOCKER_BUILDKIT=1 docker build $(FIX_ARG) -f docker/ubuntu20.04/Dockerfile_serving_release --build-arg BUILD_IMAGE=$(SERVING_BUILD_IMAGE) -t $(SERVING_RELEASE_IMAGE) --target serving_release .
 
-jupyter:
+jupyter: training
 	@DOCKER_BUILDKIT=1 docker build $(FIX_ARG) -f docker/ubuntu20.04/Dockerfile_jupyter --build-arg RELEASE_IMAGE=$(TRAINING_RELEASE_IMAGE) -t $(JUPYTER_IMAGE) docker/ubuntu20.04
 
 code-server:
