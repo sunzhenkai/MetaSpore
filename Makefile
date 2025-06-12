@@ -1,4 +1,4 @@
-.PHONY: dev training serving
+.PHONY: dev training serving jupyter code-server all
 
 REPOSITORY := sunzhenkai
 VERSION := 0.0.1
@@ -30,3 +30,5 @@ jupyter:
 
 code-server:
 	@DOCKER_BUILDKIT=1 docker build $(FIX_ARG) -f docker/ubuntu20.04/Dockerfile_codeserver --build-arg RELEASE_IMAGE=$(TRAINING_RELEASE_IMAGE) -t $(CODESERVER_IMAGE) docker/ubuntu20.04
+
+all: dev training serving jupyter code-server
