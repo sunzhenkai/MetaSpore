@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 ARG DEV_IMAGE
-FROM ${DEV_IMAGE} as build_training
+FROM ${DEV_IMAGE} AS build_training
 
 COPY . /opt/metaspore-src
 

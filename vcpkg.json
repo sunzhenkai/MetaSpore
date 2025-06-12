@@ -13,18 +13,14 @@
     "boost-spirit",
     {
       "name": "asio-grpc",
-      "features": [
-        "boost-container"
-      ]
+      "features": ["boost-container"]
     },
     "protobuf",
     "fmt",
     "spdlog",
     {
       "name": "mimalloc",
-      "features": [
-        "override"
-      ]
+      "features": ["override"]
     },
     "gtest",
     "gflags",
@@ -39,9 +35,7 @@
     "thrift",
     {
       "name": "aws-sdk-cpp",
-      "features": [
-        "s3"
-      ]
+      "features": ["s3"]
     },
     "concurrentqueue",
     "zeromq",
@@ -52,10 +46,6 @@
       "name": "python3",
       "version": "3.8.3",
       "port-version": 2
-    },
-    {
-      "name": "abseil",
-      "version": "20250127.0"
     }
   ],
   "builtin-baseline": "e2794913924ef606cc7bbc59c173f2714e9853c5"
