@@ -1,5 +1,5 @@
 ARG DEV_IMAGE
-FROM ${DEV_IMAGE} as build_serving
+FROM ${DEV_IMAGE} AS build_serving
 ARG ENABLE_GPU=OFF
 
 COPY . /opt/metaspore-src

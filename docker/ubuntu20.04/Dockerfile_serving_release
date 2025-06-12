@@ -15,10 +15,10 @@
 #
 ARG BUILD_IMAGE
 ARG RUNTIME=cpu
-FROM nvidia/cuda:11.6.2-cudnn8-runtime-ubuntu20.04 as serving_gpu_base
-FROM ubuntu:20.04 as serving_cpu_base
+FROM nvidia/cuda:11.6.2-cudnn8-runtime-ubuntu20.04 AS serving_gpu_base
+FROM ubuntu:20.04 AS serving_cpu_base
 
-FROM serving_${RUNTIME}_base as serving_base
+FROM serving_${RUNTIME}_base AS serving_base
 ENV DEBIAN_FRONTEND=noninteractive
 COPY docker/ubuntu20.04/assets/huaweicloud-ubuntu20.04-sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y && apt-get clean
@@ -39,15 +39,15 @@ RUN python -m pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/
 RUN python -m pip config set globa.extra-index-url "https://pypi.tuna.tsinghua.edu.cn/simple/ https://pypi.org/simple/"
 RUN python -m pip install 'grpcio[protobuf]==1.47.2' pyarrow==7.0.0 numpy --no-cache-dir
 
-FROM ${BUILD_IMAGE} as build_stage
+FROM ${BUILD_IMAGE} AS build_stage
 
-FROM serving_base as serving_release
+FROM serving_base AS serving_release
 COPY --from=build_stage /opt/metaspore-serving/ /opt/metaspore-serving
 COPY --from=build_stage /opt/metaspore-build-release/libarrow.so* /opt/metaspore-serving/bin/
 COPY --from=build_stage /opt/metaspore-build-release/libonnxruntime* /opt/metaspore-serving/bin/
 COPY --from=build_stage /opt/metaspore-build-release/libstdc++.so* /opt/metaspore-serving/bin/
 COPY --from=build_stage /opt/metaspore-build-release/libgcc_s.so* /opt/metaspore-serving/bin/
 
-FROM serving_base as serving_debug
+FROM serving_base AS serving_debug
 RUN apt-get install -y gdb vim python3 && apt-get clean
 COPY --from=build_stage /opt/metaspore/debug/metaspore-serving-bin.debug /opt/metaspore/debug/metaspore-serving-bin.debug
