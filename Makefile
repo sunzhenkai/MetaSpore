@@ -1,7 +1,7 @@
 .PHONY: dev training serving jupyter code-server all
 
 REPOSITORY := sunzhenkai
-VERSION := 0.0.1
+VERSION := latest
 RUNTIME := cpu
 FIX_ARG := --network host --build-arg RUNTIME=$(RUNTIME) --build-arg http_proxy=${http_proxy} --build-arg https_proxy=${https_proxy}
 DOCKER_CMD := DOCKER_BUILDKIT=1 docker build $(FIX_ARG)
