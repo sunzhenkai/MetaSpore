@@ -4,7 +4,7 @@ FROM ${RELEASE_IMAGE}
 
 # The following is modified from: https://github.com/kubeflow/kubeflow/blob/master/components/example-notebook-servers/base/Dockerfile
 
-ENV NB_USER jovyan
+ENV NB_USER dev
 ENV NB_UID 1000
 ENV HOME /home/$NB_USER
 ENV NB_PREFIX ${HOME}
@@ -107,9 +107,9 @@ RUN curl -sL "https://github.com/cdr/code-server/releases/download/${CODESERVER_
  && rm -f /tmp/code-server.deb
 
 # s6 - copy scripts
-COPY --chown=jovyan:users codeserver_s6/ /etc
+COPY --chown=dev:users codeserver_s6/ /etc
 RUN mkdir -p /var/run/s6 \
- && mkdir -p /home/jovyan/.config \
+ && mkdir -p /home/dev/.config \
  && chown -R ${NB_USER}:users /var/run/s6 \
  && npm config set registry https://registry.npm.taobao.org \
  && chown -R ${NB_USER}:users ${HOME}
