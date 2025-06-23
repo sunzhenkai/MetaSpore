@@ -9,3 +9,5 @@ export CXX=${CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-g++
 
 export VCPKG_C_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
 export VCPKG_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"
+
+export MAKEFLAGS="-j$(nproc)"

@@ -6,6 +6,9 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
+        "CMAKE_SYSROOT": "$env{CONDA_PREFIX}/x86_64-conda-linux-gnu/sysroot",
+        "CMAKE_C_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-gcc",
+        "CMAKE_CXX_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-g++",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_BUILD_TYPE": "Debug",
         "ENABLE_TESTS": "ON"
