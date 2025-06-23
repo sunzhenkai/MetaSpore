@@ -1,5 +1,24 @@
 .PHONY: dev training serving jupyter code-server all
 
+# development
+CONDA_ENV_NAME := metaspore-dev
+ENV_YML := dev/config/environment.yml
+PYTHON := $(CONDA_DIR)/bin/PYTHON
+CONDA_ACTIVATE := source $(CONDA_DIR)/bin/activate $(CONDA_ENV_NAME)
+
+env-create:
+	@conda env create -f $(ENV_YML) --channel=conda-forge
+
+env-update:
+	@conda env update -f $(ENV_YML) --prune
+
+env-remove:
+	@conda env remove -n $(CONDA_ENV_NAME)
+
+env-export:
+	@conda env export --from-history > $(ENV_YML)
+
+# images
 REPOSITORY := sunzhenkai
 VERSION := latest
 RUNTIME := cpu
