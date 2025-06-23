@@ -21,3 +21,4 @@ python.zip
 tutorials/output
 vcpkg_installed
 *.log
+release

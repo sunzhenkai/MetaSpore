@@ -1,4 +1,4 @@
-.PHONY: dev training serving jupyter code-server all
+.PHONY: dev training serving jupyter code-server all build release
 
 # development
 CONDA_ENV_NAME := metaspore-dev
@@ -17,6 +17,15 @@ env-remove:
 
 env-export:
 	@conda env export | grep -v '^prefix:' > $(ENV_YML)
+
+# build
+build:
+	@cmake --preset=build
+	@cmake --build build
+
+release:
+	@cmake --preset=release
+	@cmake --build release
 
 # images
 REPOSITORY := sunzhenkai
