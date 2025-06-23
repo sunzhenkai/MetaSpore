@@ -16,7 +16,7 @@ env-remove:
 	@conda env remove -n $(CONDA_ENV_NAME)
 
 env-export:
-	@conda env export --from-history > $(ENV_YML)
+	@conda env export | grep -v '^prefix:' > $(ENV_YML)
 
 # images
 REPOSITORY := sunzhenkai
