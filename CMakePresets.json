@@ -13,7 +13,7 @@
         "Python3_EXECUTABLE": "$env{CONDA_PREFIX}/bin/python3",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_BUILD_TYPE": "Debug",
-        "ENABLE_TESTS": "ON",
+        "ENABLE_TESTS": "OFF",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
         "ENABLE_GPU": "OFF"
       },
