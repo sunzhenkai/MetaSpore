@@ -18,7 +18,7 @@
         "ENABLE_GPU": "OFF"
       },
       "environment": {
-        "CXXFLAGS": "-Wno-stringop-truncation"
+        "CXXFLAGS": "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-stringop-truncation"
       }
     },
     {
@@ -31,7 +31,7 @@
         "ENABLE_TESTS": "OFF"
       },
       "environment": {
-        "CXXFLAGS": "-Wno-stringop-truncation"
+        "CXXFLAGS": "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-stringop-truncation"
       }
     }
   ]
