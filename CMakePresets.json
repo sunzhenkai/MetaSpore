@@ -9,9 +9,12 @@
         "CMAKE_SYSROOT": "$env{CONDA_PREFIX}/x86_64-conda-linux-gnu/sysroot",
         "CMAKE_C_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-gcc",
         "CMAKE_CXX_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-g++",
+        "Python_EXECUTABLE": "$env{CONDA_PREFIX}/bin/python",
+        "Python3_EXECUTABLE": "$env{CONDA_PREFIX}/bin/python3",
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
         "CMAKE_BUILD_TYPE": "Debug",
-        "ENABLE_TESTS": "ON"
+        "ENABLE_TESTS": "ON",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       },
       "environment": {
         "CXXFLAGS": "-Wno-stringop-truncation"
@@ -23,7 +26,7 @@
       "binaryDir": "${sourceDir}/vcpkg-build",
       "cacheVariables": {
         "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
-        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
         "ENABLE_TESTS": "OFF"
       },
       "environment": {
