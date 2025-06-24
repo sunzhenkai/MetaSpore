@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "build",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_SYSROOT": "$env{CONDA_PREFIX}/x86_64-conda-linux-gnu/sysroot",
+        "CMAKE_C_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-gcc",
+        "CMAKE_CXX_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-g++",
+        "Python_EXECUTABLE": "$env{CONDA_PREFIX}/bin/python",
+        "Python3_EXECUTABLE": "$env{CONDA_PREFIX}/bin/python3",
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "ENABLE_TESTS": "OFF",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "ENABLE_GPU": "OFF"
+      },
+      "environment": {
+        "CXXFLAGS": "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-stringop-truncation"
+      }
+    },
+    {
+      "name": "release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/vcpkg-build",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "ENABLE_TESTS": "OFF"
+      },
+      "environment": {
+        "CXXFLAGS": "-D_GLIBCXX_USE_CXX11_ABI=0 -Wno-stringop-truncation"
+      }
+    }
+  ]
+}

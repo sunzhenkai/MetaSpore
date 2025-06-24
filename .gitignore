@@ -20,3 +20,6 @@ python.zip
 .venv
 tutorials/output
 vcpkg_installed
+*.log
+release
+.cache

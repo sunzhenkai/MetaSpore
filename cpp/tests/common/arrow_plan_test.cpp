@@ -14,6 +14,8 @@
 // limitations under the License.
 //
 
+#include <condition_variable>
+
 #include <arrow/api.h>
 #include <arrow/compute/api.h>
 #include <arrow/compute/exec/exec_plan.h>
