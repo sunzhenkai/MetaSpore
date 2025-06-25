@@ -7,7 +7,7 @@ PYTHON := $(CONDA_DIR)/bin/PYTHON
 CONDA_ACTIVATE := source $(CONDA_DIR)/bin/activate $(CONDA_ENV_NAME)
 
 env-create:
-	@conda env create -f $(ENV_YML) --channel=conda-forge
+	@conda env create -f $(ENV_YML)
 
 env-update:
 	@conda env update -f $(ENV_YML) --prune
