@@ -21,16 +21,13 @@
 #
 
 import os
-import subprocess
 from setuptools import setup
 from setuptools import Extension
 from setuptools.command.build_ext import build_ext
 
-
 class MetaSporeExtension(Extension):
     def __init__(self, name):
         super().__init__(name, sources=[])
-
 
 class metaspore_build_ext(build_ext):
     def run(self):
@@ -38,7 +35,7 @@ class metaspore_build_ext(build_ext):
             self.build_metaspore(ext)
 
     def get_metaspore_so_path(self):
-        key = "_METASPORE_SO"
+        key = '_METASPORE_SO'
         path = os.environ.get(key)
         if path is None:
             message = "environment variable %r is not set; " % key
@@ -51,39 +48,17 @@ class metaspore_build_ext(build_ext):
 
     def build_metaspore(self, ext):
         import shutil
-
         metaspore_so_path = self.get_metaspore_so_path()
         ext_so_path = self.get_ext_fullpath(ext.name)
-        print(
-            f"ext copy so cwd: {os.getcwd()} from {metaspore_so_path} to {ext_so_path}"
-        )
+        print(f'ext copy so cwd: {os.getcwd()} from {metaspore_so_path} to {ext_so_path}')
         shutil.copy(metaspore_so_path, ext_so_path)
-        src_libs_path = os.path.join(os.path.dirname(metaspore_so_path), ".libs")
-        dst_libs_path = os.path.join(os.path.dirname(ext_so_path), ".libs")
-        print(
-            f"ext copy .libs cwd: {os.getcwd()} from {src_libs_path} to {dst_libs_path}"
-        )
+        src_libs_path = os.path.join(os.path.dirname(metaspore_so_path), '.libs')
+        dst_libs_path = os.path.join(os.path.dirname(ext_so_path), '.libs')
+        print(f'ext copy .libs cwd: {os.getcwd()} from {src_libs_path} to {dst_libs_path}')
         shutil.rmtree(dst_libs_path, True)
         shutil.copytree(src_libs_path, dst_libs_path)
 
-
-def get_git_commit_id():
-    try:
-        commit = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"])
-        return commit.decode("utf-8").strip()
-    except Exception:
-        return "unknown"
-
-
-def get_base_version():
-    with open("VERSION", "r") as f:
-        return f.read().strip()
-
-
 setup(
-    name="metaspore",
-    version=f"{get_base_version()}+{get_git_commit_id()}",
-    description="MetaSpore",
-    ext_modules=[MetaSporeExtension("metaspore/_metaspore")],
-    cmdclass={"build_ext": metaspore_build_ext},
+    ext_modules=[MetaSporeExtension('metaspore/_metaspore')],
+    cmdclass={ 'build_ext': metaspore_build_ext },
 )
