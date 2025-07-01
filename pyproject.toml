@@ -24,33 +24,41 @@ version = "1.2.0"
 description = "Metaspore: A Unified End-to-end Machine Intelligence Platform"
 readme = "README.md"
 requires-python = ">=3.8"
-keywords = ["training", "ai", "machinelearning", "deeplearning", "pytorch", "spark", "pyspark"]
-license = {text = "Apache-2.0"}
-authors = [{name = "DMetaSoul"}, {email = "opensource@dmetasoul.com"}]
+keywords = [
+  "training",
+  "ai",
+  "machinelearning",
+  "deeplearning",
+  "pytorch",
+  "spark",
+  "pyspark",
+]
+license = { text = "Apache-2.0" }
+authors = [{ name = "DMetaSoul" }, { email = "opensource@dmetasoul.com" }]
 classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: Apache Software License",
-    "Operating System :: POSIX :: Linux",
-    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
-    'numpy',
-    'pandas',
-    'findspark~=2.0.1',
-    'cloudpickle~=2.1.0',
-    'nest-asyncio~=1.6.0',
-    'attrs~=23.2.0',
-    'cattrs~=23.2.3',
-    'PyYAML',
-    'tabulate~=0.8.10',
-    'pyarrow==7.0.0',
-    'botocore',
-    'boto3',
-    'awscli',
-    'awscli-plugin-endpoint',
-    'fsspec[s3]',
-    's3fs',
-    'requests'
+  'numpy==1.22.4',
+  'pandas==2.1.4',
+  'findspark~=2.0.1',
+  'cloudpickle~=2.1.0',
+  'nest-asyncio~=1.6.0',
+  'attrs~=23.2.0',
+  'cattrs~=23.2.3',
+  'PyYAML',
+  'tabulate~=0.8.10',
+  'pyarrow==7.0.0',
+  'botocore',
+  'boto3',
+  'awscli',
+  'awscli-plugin-endpoint',
+  'fsspec[s3]',
+  's3fs',
+  'requests',
 ]
 
 [project.urls]
